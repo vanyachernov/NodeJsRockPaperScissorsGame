@@ -1,7 +1,7 @@
+const User = require('./User');
 const Computer = require('./Computer');
 const HmacGenerator = require('./HmacGenerator');
 const MoveGenerator = require('./MoveGenerator');
-const User = require('./User');
 
 class Game {
     constructor(moves) {
@@ -14,9 +14,10 @@ class Game {
 
     Start() {
         const computerMove = this.movesMachine.GetMove();
-        const hmac = this.hmacGenerator.Generate(computerMove);
-
-        console.log(`HMAC: ${hmac}`);
+        
+        const hmac = this.hmacGenerator.GenerateHmac(computerMove);
+        
+        console.log(`\nHMAC: ${hmac}`);
 
         this.PrintMenu();
 
@@ -29,21 +30,23 @@ class Game {
         }
 
         if (parseInt(userMove) === 0) {
-            console.log('Exit. Goodbye!');
+            console.log('Game: Exit. Goodbye!');
             return;
         }
 
         const playerMove = this.moves[parseInt(userMove) - 1];
         const result = this.movesGenerator.GetResult(playerMove, computerMove);
 
-        console.log(`Your move: ${playerMove}`);
+        console.log(`\nYour move: ${playerMove}`);
         console.log(`Computer move: ${computerMove}`);
-        console.log(`Result: ${result}`);
-        console.log(`HMAC Key: ${this.hmacGenerator.GetHmac()}`);
+        console.log(`You ${result.toString().toLowerCase()}!\n`);
+        console.log(`HMAC key: ${this.hmacGenerator.GetKey()}`);
+        console.log(`To check the authenticity of the HMAC, follow this link: https://wtools.io/ru/generate-hmac-hash\n`);
     }
 
+
     PrintMenu() {
-        console.log('Menu:');
+        console.log('\nMenu:');
         for (let k = 0; k < this.moves.length; k++) {
             console.log(`${k + 1} - ${this.moves[k]}`);
         }
