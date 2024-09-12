@@ -40,6 +40,12 @@ class MoveGenerator {
         console.log('Help table:');
         console.log(table.toString());
     }
+
+    GetResult(playerMove, computerMove) {
+        const playerIndex = this.moves.indexOf(playerMove);
+        const computerIndex = this.moves.indexOf(computerMove);
+        return this.rulesTable[playerIndex][computerIndex];
+    }
 }
 
 module.exports = MoveGenerator;
