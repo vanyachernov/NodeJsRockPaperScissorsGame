@@ -1,3 +1,5 @@
+const Table = require('cli-table3');
+
 class MoveGenerator {
     constructor(moves) {
         this.moves = moves;
@@ -23,6 +25,20 @@ class MoveGenerator {
         }
 
         return table;
+    }
+
+    Print() {
+        const table = new Table({
+            head: ['↓PC/User→'].concat(this.moves),
+            style: { head: ['cyan'] },
+        });
+
+        for (let i = 0; i < this.moves.length; i++) {
+            table.push([this.moves[i]].concat(this.rulesTable[i]));
+        }
+
+        console.log('Help table:');
+        console.log(table.toString());
     }
 }
 
