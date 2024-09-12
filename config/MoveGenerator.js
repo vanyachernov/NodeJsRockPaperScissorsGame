@@ -19,7 +19,7 @@ class MoveGenerator {
                 } else {
                     const half = Math.floor(movesLength / 2);
                     const diff = (j - i + movesLength) % movesLength;
-                    table[i][j] = (diff <= half && diff !== 0) ? 'Win' : "Lose";
+                    table[i][j] = (diff <= half && diff !== 0) ? 'Win' : 'Lose';
                 }
             }
         }
@@ -34,17 +34,22 @@ class MoveGenerator {
         });
 
         for (let i = 0; i < this.moves.length; i++) {
-            table.push([this.moves[i]].concat(this.rulesTable[i]));
+            const row = [this.moves[i]];
+            for (let j = 0; j < this.moves.length; j++) {
+                row.push(this.rulesTable[j][i]);
+            }
+            table.push(row);
         }
 
         console.log('Help table:');
         console.log(table.toString());
     }
 
+
     GetResult(playerMove, computerMove) {
-        const playerIndex = this.moves.indexOf(playerMove);
-        const computerIndex = this.moves.indexOf(computerMove);
-        return this.rulesTable[playerIndex][computerIndex];
+        const userIndex = this.moves.indexOf(playerMove);
+        const compIndex = this.moves.indexOf(computerMove);
+        return this.rulesTable[userIndex][compIndex];
     }
 }
 
