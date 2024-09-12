@@ -1,6 +1,13 @@
+const RuleChecker = require('./config/RuleChecker');
+const Game = require('./config/Game');
+
 const args = process.argv.slice(2);
 
-if (args.length < 3 || args.length % 2 === 0 || new Set(args).size !== args.length) {
-    console.error('Error: You must provide an odd number of unique moves (at least 3)!');
-    process.exit();
+let ruleChecker = new RuleChecker(args);
+
+if (ruleChecker.IsValidInput() && ruleChecker.IsActionInput())
+{
+    const game = new Game(args);
+    
+    game.Start();
 }

@@ -8,5 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "cli-table3": "^0.6.5",
+    "prompt-sync": "^4.2.0"
+  }
 }
