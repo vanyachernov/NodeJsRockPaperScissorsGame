@@ -14,7 +14,9 @@ class RuleChecker {
         const isValid = this.moves.every(move => this.actions.includes(move));
 
         if (!isValid) {
-            console.error('\nGame: Invalid move detected. Allowed moves are: ', this.actions.map(action => action[0].toUpperCase() + action.slice(1)).join(", "));
+            console.error('\nGame: Invalid move detected. Allowed moves are: ', 
+                this.actions.map(action => 
+                    action[0].toUpperCase() + action.slice(1)).join(", "));
             console.error('Try again! Example: node index rock paper scissors\n');
             return false;
         }
