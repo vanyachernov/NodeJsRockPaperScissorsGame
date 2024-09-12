@@ -29,7 +29,7 @@ class MoveGenerator {
 
     Print() {
         const table = new Table({
-            head: ['↓PC/User→'].concat(this.moves),
+            head: ['↓User/PC→'].concat(this.moves),
             style: { head: ['cyan'] },
         });
 
