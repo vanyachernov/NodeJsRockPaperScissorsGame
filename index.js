@@ -5,7 +5,7 @@ const args = process.argv.slice(2);
 
 let ruleChecker = new RuleChecker(args);
 
-if (ruleChecker.IsValidInput() && ruleChecker.IsActionInput())
+if (ruleChecker.IsActionInput())
 {
     const game = new Game(args);
     
