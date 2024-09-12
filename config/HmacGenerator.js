@@ -1,3 +1,5 @@
+const crypto= require('crypto');
+
 class HmacGenerator {
     constructor() {
         this.key = crypto.randomBytes(32).toString('hex');

@@ -1,3 +1,5 @@
+const crypto= require('crypto');
+
 class Computer {
     constructor(moves) {
         this.moves = moves;

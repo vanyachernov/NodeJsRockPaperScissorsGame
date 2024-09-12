@@ -1,3 +1,5 @@
+const prompt = require('prompt-sync') ({ sigint: true });
+
 class User {
     constructor(engine) {
         this.gameEngine = engine;
